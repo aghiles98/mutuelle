@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem
+                id="insurance_main_menu"
+                name="Mutuelle"/>
+
+        <menuitem
+                id="insurance_management_menu"
+                name="Gestion contrats"
+                parent="insurance_main_menu"/>
+        <menuitem
+                id="insurance_management_submenu"
+                name="Adhésion"
+                parent="insurance_management_menu"
+                action="action_policy_management"/>
+        <menuitem
+                id="claim_management_submenu"
+                name="Capital décès"
+                parent="insurance_management_menu"
+                action="action_claim_management"/>
+
+        <menuitem
+                id="employee_management_menu"
+                name="Bénéficiaires"
+                parent="insurance_main_menu"
+                action="action_employee_management"/>
+        <menuitem
+                id="organism_management_menu"
+                name="Organisme"
+                parent="insurance_main_menu"
+                action="action_organism_management"/>
+
+        <menuitem
+                id="policy_management_menu"
+                name="Nouvel Adhérent"
+                parent="insurance_main_menu"
+                action="action_x_insurance_management"/>
+    </data>
+
+</odoo>

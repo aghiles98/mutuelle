@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="organism_details_form" model="ir.ui.view">
+            <field name="name">Organism Details</field>
+            <field name="model">x_organism.details</field>
+            <field name="arch" type="xml">
+                <form string="Organism Details Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="x_name"/>
+                                <field name="x_organism_designation"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="organism_details_tree" model="ir.ui.view">
+            <field name="name">Organism Details</field>
+            <field name="model">x_organism.details</field>
+            <field name="arch" type="xml">
+                <tree string="Organism Details Tree">
+                    <field name="x_name"/>
+                    <field name="x_organism_designation"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_organism_management" model="ir.actions.act_window">
+            <field name="name">Organisme</field>
+            <field name="res_model">x_organism.details</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    You have'nt created any organism yet.
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

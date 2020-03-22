@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_x_insurance_details" model="ir.sequence">
+            <field name="name">X Insurance Details</field>
+            <field name="code">x_insurance.details</field>
+            <field name="prefix">ADT/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_claim_details" model="ir.sequence">
+            <field name="name">Claim Details</field>
+            <field name="code">claim.details</field>
+            <field name="prefix">CCD/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_x_organism_details" model="ir.sequence">
+            <field name="name">Organism Details</field>
+            <field name="code">x_organism.details</field>
+            <field name="prefix">ORG/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

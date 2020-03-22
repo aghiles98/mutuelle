@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="x_insurance_details_form" model="ir.ui.view">
+            <field name="name">X Insurance Details</field>
+            <field name="model">x_insurance.details</field>
+            <field name="arch" type="xml">
+                <form string="Insurance Details Form">
+                    <header>
+                       
+                   </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="x_name"/>
+                                <field name="x_nss"/>
+                                <field name="x_sexe"/>
+                                <field name="x_nom"/>
+                                <field name="x_prenom"/>
+                                <field name="x_date_n"/>
+                                <field name="x_employee_id"/>
+                            </group>
+                            <group>
+                                <field name="x_situation"/>
+                                <field name="x_nmc"/>
+                                <field name="x_statut"/>
+                                <field name="x_tel"/>
+                                <field name="x_adresse"/>
+                                <field name="x_num_compte"/>
+                                <field name="x_agence"/>
+                                <field name="x_organism"/>
+                                <field name="x_date_af"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Obsevations et notes">
+                                <field name="x_note_field"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="x_insurance_details_tree" model="ir.ui.view">
+            <field name="name">Insurance Details</field>
+            <field name="model">x_insurance.details</field>
+            <field name="arch" type="xml">
+                <tree string="Insurance Details Tree">
+                    <field name="x_name"/>
+                    <field name="x_nom"/>
+                    <field name="x_prenom"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="x_insurance_details_graph">
+            <field name="name">insurance.details.graph</field>
+            <field name="model">x_insurance.details</field>
+            <field name="arch" type="xml">
+                <graph string="Insurance Details">
+                </graph>
+            </field>
+        </record>
+        <record id="action_x_insurance_management" model="ir.actions.act_window">
+            <field name="name">Nouvel adhérent</field>
+            <field name="res_model">x_insurance.details</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    You have'nt created any insurance yet.
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="claim_details_form" model="ir.ui.view">
+            <field name="name">Claim Details</field>
+            <field name="model">claim.details</field>
+            <field name="arch" type="xml">
+                <form string="Claim Details Form">
+                    <sheet>
+                        <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="x_insurance_id"/>
+                                <field name="x_etat"/>
+                                <field name="x_montant"/>
+                            </group>
+                            <group>
+                                <field name="x_date_dcsn"/>
+                                <field name="x_date_dec"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Liste des bénéficiaires">
+                                <field name="x_employee_id"/>
+                            </page>
+                            <page string="Commentaires">
+                                <field name="note_field"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="claim_details_tree" model="ir.ui.view">
+            <field name="name">Claim Details</field>
+            <field name="model">claim.details</field>
+            <field name="arch" type="xml">
+                <tree string="Claim Details Tree">
+                    <field name="name"/>
+                    <field name="x_insurance_id"/>
+                    <field name="x_etat"/>
+                    <field name="x_montant"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="claim_details_graph">
+            <field name="name">claim.details.graph</field>
+            <field name="model">claim.details</field>
+            <field name="arch" type="xml">
+                <graph string="Claim Details">
+                    <field name="name"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="action_claim_management" model="ir.actions.act_window">
+            <field name="name">Contrat capital décès</field>
+            <field name="res_model">claim.details</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Vous n'avez créé aucun contrat capital décès.
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

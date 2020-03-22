@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="employee_details_form" model="ir.ui.view">
+            <field name="name">Employee Details</field>
+            <field name="model">employee.details</field>
+            <field name="arch" type="xml">
+                <form string="Employee Details Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="x_nom"/>
+                                <field name="x_prenom"/>
+                            </group>
+                            <group>
+                                <field name="x_date_n"/>
+                                <field name="x_sexe"/>
+                                <field name="x_position"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="employee_details_tree" model="ir.ui.view">
+            <field name="name">Employee Details</field>
+            <field name="model">employee.details</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Details Tree">
+                    <field name="x_nom"/>
+                    <field name="x_prenom"/>
+                    <field name="x_position"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="employee_details_graph">
+            <field name="name">employee.details.graph</field>
+            <field name="model">employee.details</field>
+            <field name="arch" type="xml">
+                <graph string="Employee Details">
+                    <field name="x_nom"/>
+                </graph>
+            </field>
+        </record>
+        <record id="action_employee_management" model="ir.actions.act_window">
+            <field name="name">Bénéficiaires</field>
+            <field name="res_model">employee.details</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    You have'nt created any employee yet.
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

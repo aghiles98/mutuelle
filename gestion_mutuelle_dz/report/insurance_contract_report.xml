@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="x_insurance_contract"
+        string="Attestation d'adhésion"
+        model="x_insurance.details"
+        report_type="qweb-pdf"
+        name="gestion_mutuelle_dz.x_insurance_report"
+        file="gestion_mutuelle_dz.x_insurance_report"
+    />
+    <report
+        id="x_insurance_card"
+        string="Carte de mutualiste"
+        model="x_insurance.details"
+        report_type="qweb-pdf"
+        name="gestion_mutuelle_dz.x_insurance_card_report"
+        file="gestion_mutuelle_dz.x_insurance_card_report"
+    />
+    <report
+        id="x_insurance_contrat_ad"
+        string="Contrat d'adhésion"
+        model="policy.details"
+        report_type="qweb-pdf"
+        name="gestion_mutuelle_dz.x_insurance_contrat_ad_report"
+        file="gestion_mutuelle_dz.x_insurance_contrat_ad_report"
+    />
+    <report
+        id="x_insurance_contrat_dc"
+        string="Décision Décès"
+        model="claim.details"
+        report_type="qweb-pdf"
+        name="gestion_mutuelle_dz.x_insurance_contrat_dc_report"
+        file="gestion_mutuelle_dz.x_insurance_contrat_dc_report"
+    />
+    <report
+        id="x_insurance_contrat_deces"
+        string="Contrat Décès"
+        model="claim.details"
+        report_type="qweb-pdf"
+        name="gestion_mutuelle_dz.x_insurance_contrat_deces_report"
+        file="gestion_mutuelle_dz.x_insurance_contrat_deces_report"
+    />
+
+    <template id="x_insurance_report">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <t t-set="is_pro_forma" t-value="True"/>
+                <t t-foreach="docs" t-as="doc">
+                    <br/><br/>
+                    <h1><b><center>Attestation d'adhésion</center></b></h1><br/><br/><br/>
+                    <p>Je soussigné ALI MOUSSA directeur de la Mutuelle Générale des travailleurs de la Sécurité Sociale (MGTSS) atteste par la présente que : <t t-esc="doc.x_nom"/> <t t-esc="doc.x_prenom"/> né le <t t-esc="doc.x_date_n"/> et travaillant au niveau de l’organisme <t t-esc="doc.x_organism.x_organism_designation"/> est adhérant(e) de la mutuelle depuis la date de <t t-esc="doc.x_date_af"/> sous le numéro <t t-esc="doc.x_name"/></p>
+                    <br/><br/>
+                    <p>Cette attstation est délivré à la demand ede l’intéressé(e) ,pou servir et valoir se que de droit</p>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="x_insurance_contrat_ad_report">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <t t-set="is_pro_forma" t-value="True"/>
+                <t t-foreach="docs" t-as="doc">
+                    <br/><br/>
+                    <h1><b><center>Contrat d'adhésion</center></b></h1><br/><br/><br/>
+                    <table style="width:100%">
+                      <tr>
+                        <th> </th>
+                        <th> </th>
+                      </tr>
+                      <tr>
+                        <td>Adhérent : <t t-esc="doc.x_adherent.x_nom"/> <t t-esc="doc.x_adherent.x_prenom"/></td>
+                        <td>Date Affiliation : <t t-esc="doc.x_date_af"/></td>
+                      </tr>
+                      <tr>
+                        <td>Organisme : <t t-esc="doc.x_organism.x_organism_designation"/></td>
+                        <td>Date Effet : <t t-esc="doc.x_date_ef"/></td>
+                      </tr>
+                      <tr>
+                        <td>Mode de paiement : <t t-esc="doc.x_mode_p"/></td>
+                        <td>Montant Cotisation : <t t-esc="doc.x_montant"/></td>
+                      </tr>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="x_insurance_contrat_deces_report">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <t t-set="is_pro_forma" t-value="True"/>
+                <t t-foreach="docs" t-as="doc">
+                    <br/><br/>
+                    <h1><b><center>Contrat Décès</center></b></h1>
+                    <br/><br/><br/><br/>
+                    <table style="width:100%">
+                      <tr>
+                        <th>Adhérent :  <t t-esc="doc.x_insurance_id.x_nom"/> <t t-esc="doc.x_insurance_id.x_prenom"/></th>
+                        <th>N° Mutuelle :  <t t-esc="doc.x_insurance_id.x_name"/></th>
+                      </tr>
+                      <tr>
+                        <td>Etat : <t t-esc="doc.x_etat"/></td>
+                        <td>Date Décision : <t t-esc="doc.x_date_dcsn"/></td>
+                      </tr>
+                      <tr>
+                        <td>Montant de capital : <t t-esc="doc.x_montant"/></td>
+                        <td></td>
+                      </tr>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="x_insurance_contrat_dc_report">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <t t-set="is_pro_forma" t-value="True"/>
+                <t t-foreach="docs" t-as="doc">
+                    <br/><br/>
+                    <h1><b><center>Décision</center></b></h1><br/><br/>
+                    <p>Vu la decision de l’assemble Générale en date du 10.12.1998 portant institution du risque assurance décès ,Vu la décision du Dr.LADDAR Mohamed en Qualité de président de la MGTSS en date du 04 et 5.11.1995,Vu la décision de la nomination de Monsieur Ali Moussa en qualité de Directeur de la MGTSS,Il a été décidé, ARTICLE 01/ De procéder au réglement d’un capital décès au pofit des bénéficiaires désignés par <t t-esc="doc.x_insurance_id.x_nom"/> <t t-esc="doc.x_insurance_id.x_prenom"/> ,pour un montant de <t t-esc="doc.x_montant"/> DA ,ARTICLE02/Le montant de ce capital est attribué à :
+<t t-foreach="doc.x_employee_id" t-as="emp">, <t t-esc="emp.x_nom"/> <t t-esc="emp.x_prenom"/></t>.</p>
+                    
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="x_insurance_card_report">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <t t-set="is_pro_forma" t-value="True"/>
+                <t t-foreach="docs" t-as="doc">
+                    <h4><center>Carte de Mutualiste</center></h4>
+                    <table style="width:100%">
+                      <tr>
+                        <th>N° Mutuelle : <t t-esc="doc.x_name"/></th>
+                        <th> </th>
+                      </tr>
+                      <tr>
+                        <td>Nom : <t t-esc="doc.x_nom"/></td>
+                        <td>Prénom : <t t-esc="doc.x_prenom"/></td>
+                      </tr>
+                      <tr>
+                        <td>Date de naissance : <t t-esc="doc.x_date_n"/></td>
+                        <td>N° S S : <t t-esc="doc.x_nss"/></td>
+                      </tr>
+                      <tr>
+                        <td>Agence : <t t-esc="doc.x_agence"/></td>
+                        <td>Date d'effet : <t t-esc="doc.x_agence"/></td>
+                      </tr>
+                      <tr>
+                        <td> </td>
+                        <td><span style="margin-left: 2em;"></span>Le Directeur General</td>
+                      </tr>
+                    </table>
+                    <br/><br/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
